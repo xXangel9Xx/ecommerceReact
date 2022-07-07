@@ -6,6 +6,10 @@
   font: inherit;  
   vertical-align: baseline; 
 }
+html{
+  width: 100vw;
+  overflow: hidden;
+}
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
