@@ -1,6 +1,7 @@
 /* body{background-color: #000}  */
 .contain-page-productDetail{
     padding-top: 90px;
+    justify-content: center;
 }
 .card{border:none} 
 .detail{
@@ -20,7 +21,11 @@ label.radio input:checked+span{border-color: #ff0000;background-color: #ff0000;c
 .btn-danger{background-color: #ff0000 !important;border-color: #ff0000 !important}
 .btn-danger:hover{background-color: #da0606 !important;border-color: #da0606 !important}
 .btn-danger:focus{box-shadow: none}.cart i{margin-right: 10px}
-
+.data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 @media screen and (min-width:1000px) {
     .contain-page-productDetail{
         display: flex;
