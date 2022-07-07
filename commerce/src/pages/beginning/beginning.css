@@ -1,0 +1,64 @@
+@media screen and (min-width:320px){
+    .contain-page{
+        display: flex !important;
+        flex-direction: column;
+    }
+    .form-register{
+        width: 80vw;
+        margin: auto;
+        margin-top: 90px;
+        margin-bottom: 50px;
+    }
+    /* //////////////caroucel///////////// */
+
+    .carousel{
+        margin-bottom: 50px !important;
+        margin: auto;
+        width: 90vw;
+    }
+    .carousel-caption{
+        display: block !important;
+        position: initial;
+    }
+    .carousel-control-prev,.carousel-control-next{
+        top: 250px !important;
+    }
+}
+@media screen and (min-width:700px) {
+    .contain-page{
+        flex-direction: row;
+        min-height: 100vh;
+        max-width: 100%;
+        position: relative;
+        align-items: center;
+    }
+     /* //////////////form///////////// */
+    .form{
+        margin-bottom: 35px;
+    }
+    .form-register{
+        order: 1;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+     /* //////////////caroucel///////////// */
+    .carousel{
+        margin-bottom: auto !important;
+    }
+     /* //////////////caroucel and form///////////// */
+    .carousel,.form-register{
+        width: 300px;
+    }
+}
+@media screen and (min-width:800px){
+         /* //////////////caroucel and form///////////// */
+         .carousel,.form-register{
+            width: 45vw;
+        }
+
+        .carousel-control-prev,.carousel-control-next{
+            height: 70%;
+            top: 0 !important;
+        }
+}

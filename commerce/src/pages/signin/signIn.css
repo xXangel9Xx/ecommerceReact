@@ -1,0 +1,10 @@
+.contain-page-sign-in{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    max-height: 100%;
+    justify-content: center;
+}
+.sign-in-form{
+    width: 80vw;
+}

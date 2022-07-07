@@ -1,0 +1,40 @@
+.contain-page-products{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 80px;
+}
+.card{
+    margin: 25px;
+}
+@media screen and (min-width:800px) {
+    .contain-page-products{
+        justify-content: space-around;
+    }
+}
+@media screen and (min-width:1000px) {
+    .contain-page-products{
+        justify-content: start;
+    }
+    .card{
+        width: 450px;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width:1800px) {
+    .card{
+        width: 500px;
+    }
+}
+
+@media screen and (min-width:2000px) {
+    .card{
+        width: 600px;
+    }
+}
+
+@media screen and (min-width:2500px) {
+    .card{
+        width: 800px;
+    }
+}

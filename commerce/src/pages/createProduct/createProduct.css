@@ -1,0 +1,6 @@
+.contain-page-create-product{
+    min-height: 100vh;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+}
