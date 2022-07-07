@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
+import { Link }from 'react-router-dom'
 import './beginning.css'
-import image from '../../assets/images/descarga.jpeg'
+import axios from 'axios'
 const Beginning = () => {
+    const [products,setProducts] = useState([])
+    useEffect(()=>{
+        axios.get('https://codealo-commerce-cms.onrender.com/products',{
+            params:{
+                _limit:3
+            }
+        }).then(res=>{
+            let {data} = res
+           return setProducts(data)
+        })
+    },[])
+
+    useEffect(()=>{
+        console.log(products)
+    },[products])
     return (
     <div className="contain-page">
         <div className="form-register">
@@ -30,31 +46,42 @@ const Beginning = () => {
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div className="carousel-inner">
-                <div className="carousel-item active" data-bs-interval="10000">
-                        <img src={image} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
 
-                
-                <div className="carousel-item" data-bs-interval="2000">
-                    <img src={image} className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+
+                {products.length > 0 &&
+                    <div className="carousel-inner">
+
+                        <div className="carousel-item active" data-bs-interval="10000">
+                                <img  src={'https://codealo-commerce-cms.onrender.com'+ products[0].image.url} className="d-block height  w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h5>{products[0].title}</h5>
+                                <Link to={'/productDetail/'+products[0].slug} className={"btn btn-primary"}>
+                                    Ver detalles
+                                </Link>
+                            </div>
+                        </div>
+
+                        
+                        <div className="carousel-item" data-bs-interval="2000">
+                            <img  src={'https://codealo-commerce-cms.onrender.com'+products[1].image.url} className="d-block  height w-100" alt="..." />
+                                <div className="carousel-caption d-none d-md-block">
+                                <h5>{products[1].title}</h5>
+                                <Link to={'/productDetail/'+products[1].slug}  className={"btn btn-primary"}>
+                                    Ver detalles
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <img  src={'https://codealo-commerce-cms.onrender.com'+products[2].image.url} className="d-block  height w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h5>{products[2].title}</h5>
+                                <Link to={'/productDetail/'+products[2].slug}  className={"btn btn-primary"}>
+                                    Ver detalles
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="carousel-item">
-                    <img src={image} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
-            </div>
+                }
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
