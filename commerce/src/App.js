@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
-import React from 'react'
 import './App.css';
+import React,{useContext,createContext} from 'react'
 import { BrowserRouter, Routes, Route ,Navigate } from 'react-router-dom';
 import Beginning from './pages/beginning/Beginning';
 import ProductDetail from './pages/productDetail/productDetail';
@@ -10,6 +10,7 @@ import PreviousPurchases from './pages/previousPurchases/previousPurchases';
 import Products from './pages/produts/products';
 import Nav from './components/nav/nav';
 import SignIn from './pages/signin/signIn';
+
 function App() {
   return (
         <BrowserRouter>
