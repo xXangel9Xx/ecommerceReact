@@ -23,6 +23,9 @@
     .carousel-control-prev,.carousel-control-next{
         top: 250px !important;
     }
+    .carousel-indicators{
+        top: 100%;
+    }
 }
 @media screen and (min-width:700px) {
     .contain-page{
@@ -60,5 +63,8 @@
         .carousel-control-prev,.carousel-control-next{
             height: 70%;
             top: 0 !important;
+        }
+        .height{
+            height: 450px;
         }
 }
