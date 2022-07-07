@@ -2,8 +2,10 @@ import React, { useEffect,useState } from 'react'
 import { Link }from 'react-router-dom'
 import './beginning.css'
 import axios from 'axios'
+import exEmail from '../../helpersExp/expEmail'
 const Beginning = () => {
     const [products,setProducts] = useState([])
+    const [form,setForm]=useState({identifier:'',password:''})
     useEffect(()=>{
         axios.get('https://codealo-commerce-cms.onrender.com/products',{
             params:{
@@ -18,24 +20,62 @@ const Beginning = () => {
     useEffect(()=>{
         console.log(products)
     },[products])
+
+    function handleChange(e,name){
+        setForm({...form, [name]:e.target.value})
+    }
+    useEffect(()=>{
+    },[form])
+
+    function send(e){
+        e.preventDefault()
+        let inputidentifier = document.getElementById('inputidentifier1')
+
+        if(exEmail.test(form.identifier)){
+            inputidentifier.classList.contains('border')? inputidentifier.classList.remove('border','border-danger') :  console.log('') 
+            axios.post(
+                'https://codealo-commerce-cms.onrender.com/auth/local',form,
+                {
+                    headers: {
+                        'Content-Type':  'application/json'
+                    }
+                }
+            ).then(res=>{
+                 console.log(res)
+            }).catch(messageError=>{
+                console.log(messageError.response.data)
+            })
+        }else{
+            return inputidentifier.classList.add('border','border-danger')
+        }
+    }
+
     return (
     <div className="contain-page">
         <div className="form-register">
         <form className='form'>
             <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                <label for="exampleInputidentifier1" className="form-label">Email</label>
+                <input type="identifier" 
+                className="form-control" id="inputidentifier1" 
+                value={form.identifier}
+                onInput={(e)=> handleChange(e,'identifier')}
+                aria-describedby="identifierHelp" />
+                <div id="identifierHelp" className="form-text">We'll never share your identifier with anyone else.</div>
             </div>
             <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
+                <label for="inputPassword1" className="form-label">Password</label>
+                <input type="password"
+                value={form.password} 
+                onInput={(e)=> handleChange(e,'password')}
+                className="form-control"
+                id="inputPassword1" />
             </div>
             <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                 <label className="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" onClick={(e)=>send(e)} className="btn btn-primary">Submit</button>
             </form>
         </div>
 
