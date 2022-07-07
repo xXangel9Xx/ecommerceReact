@@ -1,0 +1,13 @@
+.navbar{
+    top: 0;
+    z-index: 11111111111111111111111111111111;
+    width: 100vw;
+}
+.link{
+    text-decoration: none;
+}
+@media screen and (min-width:576px) {
+    #collapsibleNavbar{
+        flex-direction: row-reverse !important;
+    }
+}
