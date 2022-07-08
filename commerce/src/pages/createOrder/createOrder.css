@@ -1,0 +1,15 @@
+.contain-page-create-product{
+    min-height: 100vh;
+    max-height: 100%;
+    padding-top: 55px;
+
+}
+.width-image{
+    width: 70px !important;
+}
+@media screen and (min-width:1000px) {
+    .width-td{
+        width: 20% !important;
+    }
+
+}
