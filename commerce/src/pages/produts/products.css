@@ -1,4 +1,11 @@
-.contain-page-products{
+.margin-top{
+    margin-top: 90px;
+}
+.select{
+    width: 300px;
+    margin-left: auto;
+}
+.contain-products{
     display: flex;
     flex-wrap: wrap;
     padding-top: 80px;
@@ -6,13 +13,28 @@
 .card{
     margin: 25px;
 }
+@media screen and (min-width:320px) {
+    .select{
+        margin-right: 10px;
+    }
+}
+@media screen and (min-width:340px) {
+    .select{
+        margin-right: 20px;
+    }
+}
+@media screen and (min-width:360px) {
+    .select{
+        margin-right: 30px;
+    }
+}
 @media screen and (min-width:800px) {
-    .contain-page-products{
+    .contain-products{
         justify-content: space-around;
     }
 }
 @media screen and (min-width:1000px) {
-    .contain-page-products{
+    .contain-products{
         justify-content: start;
     }
     .card{
