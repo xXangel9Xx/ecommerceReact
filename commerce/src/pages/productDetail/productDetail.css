@@ -26,6 +26,9 @@ label.radio input:checked+span{border-color: #ff0000;background-color: #ff0000;c
     align-items: center;
     justify-content: center;
 }
+.delete-margin{
+    margin-top: 0 !important;
+}
 @media screen and (min-width:1000px) {
     .contain-page-productDetail{
         display: flex;
