@@ -1,10 +1,11 @@
 import React,{ useState,useEffect } from 'react'
 import exEmail from '../../helpersExp/expEmail'
+import { useNavigate  }from 'react-router-dom'
 import axios from 'axios'
 import './signIn.css'
 const SignIn = () => {
     const [form,setForm]=useState({username:'',email:'',password:'', repeatPassword:''})
-    
+    const navigate = useNavigate()
     function handleChange(e,name){
          setForm({...form, [name]:e.target.value})
     }
@@ -26,7 +27,6 @@ const SignIn = () => {
             passwordInput.classList.contains('border')? passwordInput.classList.remove('border','border-danger') : console.log('') 
             repeatPasswordInput.classList.contains('border')? repeatPasswordInput.classList.remove('border','border-danger') : console.log('')
             let obj = {username: form.username, email:form.email, password:form.password}
-            console.log(obj)
             axios.post('https://codealo-commerce-cms.onrender.com/auth/local/register',obj,
                 {
                     headers: {
@@ -34,7 +34,16 @@ const SignIn = () => {
                     }
                 }
                 ).then((res)=>{
-                console.log(res)
+                    let {data} = res
+                    console.log(res)
+                     window.sessionStorage.setItem('seed',JSON.stringify( {
+                         jwt: data.jwt, 
+                         email: data.user.email,
+                         id:data.user.id,
+                     }))
+                     navigate('/products')
+                     window.location.reload()
+
             })
             
         }else{
@@ -69,12 +78,10 @@ const SignIn = () => {
                     <label for="inputPassword2" className="form-label">Repeat Password</label>
                     <input type="password" value={form.repeatPassword} onInput={(e)=> handleChange(e,'repeatPassword')} className="form-control" id="inputPassword2" />
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+
                 <button type="submit" className="btn btn-primary" onClick={(e)=>send(e)}>Submit</button>
             </form>
+           
         </div>
     )
 }
