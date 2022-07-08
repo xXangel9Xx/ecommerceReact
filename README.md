@@ -1,5 +1,5 @@
 El proyecto lo empece haciendo npx create-react-app asi que genero un proyecto dentro del proyecto XD pero bueno aqui les dejo el enlace https://github.com/xXangel1Xx/codealo-commerce/tree/main/commerce #El reto Esta genial este reto me diverti mucho y aprendi un monton gracias Codealo.
-#Node 
+# Node 
 v14.17.0
 ## Npm
 v6.14.13
