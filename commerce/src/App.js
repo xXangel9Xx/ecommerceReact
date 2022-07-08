@@ -1,17 +1,17 @@
-// import logo from './logo.svg';
 import './App.css';
-import React,{useContext,createContext} from 'react'
+import React,{useState} from 'react'
 import { BrowserRouter, Routes, Route ,Navigate } from 'react-router-dom';
+import { Redirect } from 'react-dom'
 import Beginning from './pages/beginning/Beginning';
 import ProductDetail from './pages/productDetail/productDetail';
-import Login from './pages/login/logIn';
-import CreateProduct from './pages/createProduct/createProduct';
+import CreateOrder from './pages/createOrder/createOrder';
 import PreviousPurchases from './pages/previousPurchases/previousPurchases';
 import Products from './pages/produts/products';
 import Nav from './components/nav/nav';
 import SignIn from './pages/signin/signIn';
 
 function App() {
+  const [cart,setCart] = useState([])
   return (
         <BrowserRouter>
           <Nav />
@@ -22,29 +22,32 @@ function App() {
                   path='/'
                   element={<Beginning />}
                 />
-                <Route 
-                  path='/login'
-                  element={<Login />}
-                />
+
                 <Route 
                   path='/previousPurchases'
                   element={<PreviousPurchases />}
                 />
                 <Route 
                   path='/productDetail/:id'
+                  cart={cart}
                   element={<ProductDetail />}
                 />
                 <Route 
                   path='/products'
-                  element={<Products />}
+                  element={<Products 
+                  setCart={setCart}
+                  />}
                 />
                 <Route 
                   path='/SignIn'
                   element={<SignIn />}
                 />
                 <Route 
-                  path='/createProduct'
-                  element={<CreateProduct />}
+                  path='/createOrder'
+                  element={<CreateOrder />}
+                />
+                <Route  path="*" 
+                    element={<Navigate to="/"/>}
                 />
               </Routes>
           </div>
