@@ -6,7 +6,6 @@ import axios from 'axios'
 const Products = (props) => {
     const [products,setProducts] = useState([])
     const [categories,setCategories] = useState([])
-    const [seedUser,setSeedUser]=useState(window.sessionStorage.getItem('seed'))
     const [loading,setLoading]=useState(true)
 
     useEffect(()=>{

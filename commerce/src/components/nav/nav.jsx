@@ -6,7 +6,6 @@ const Nav = () =>{
     const navigate = useNavigate()
     useEffect(()=>{
         setSeed(JSON.parse(seed))
-        console.log(seed)
     },[window.sessionStorage.getItem('seed')])
     
     function activeLink(idLink){
@@ -21,7 +20,6 @@ const Nav = () =>{
         window.location.reload()
     }
     useEffect(()=>{
-        console.log(seed)
     },[seed])
     return (
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark position-fixed">

@@ -10,6 +10,7 @@ const Beginning = () => {
     useEffect(()=>{
        let user = JSON.parse(window.localStorage.getItem('user'))
        if(user && user.checked){
+           user.password = atob(user.password)
            document.getElementById('check1').checked = user.checked
             setForm(user)
        }
@@ -49,6 +50,7 @@ const Beginning = () => {
             ).then(res=>{
                 if(document.getElementById('check1').checked){
                     form['checked'] = true
+                    form.password = btoa(form.password)
                     window.localStorage.setItem('user',JSON.stringify(form))
                 }else{
                     window.localStorage.clear()
@@ -57,7 +59,7 @@ const Beginning = () => {
                 window.sessionStorage.setItem('seed',JSON.stringify( {
                     jwt: data.jwt, 
                     email: data.user.email,
-                    id:data.user.id,
+                    id: btoa(data.user.id),
                     role:data.user.role,
                     username:data.user.username
                 }))

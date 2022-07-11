@@ -35,11 +35,10 @@ const SignIn = () => {
                 }
                 ).then((res)=>{
                     let {data} = res
-                    console.log(res)
                      window.sessionStorage.setItem('seed',JSON.stringify( {
                          jwt: data.jwt, 
                          email: data.user.email,
-                         id:data.user.id,
+                         id: btoa(data.user.id),
                      }))
                      navigate('/products')
                      window.location.reload()
