@@ -2,6 +2,7 @@
     .contain-page{
         display: flex !important;
         flex-direction: column;
+        margin-top: 56px;
     }
     .form-register{
         width: 80vw;
