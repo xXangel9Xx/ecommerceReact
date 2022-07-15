@@ -51,9 +51,8 @@ const ProductDetail = () => {
     function addToCar(){
             myCarts.push(form)
             setMyCarts(myCarts)
-            setLoading(true)
             if(form.quantity == 0){
-                setStatus(400)
+               return setStatus(400)
             }
 
              if(shoppingCart && status!=400){
@@ -64,7 +63,6 @@ const ProductDetail = () => {
                 }
                 
                 ).then((res)=>{
-                    console.log(res)
                     setLoading(false)
                  }).catch(err=>{
                     setStatus(400)
