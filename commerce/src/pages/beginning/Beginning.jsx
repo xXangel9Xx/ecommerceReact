@@ -118,9 +118,9 @@ const Beginning = () => {
                                         <img  src={'https://codealo-commerce-cms.onrender.com'+ products[0].image.url} className="d-block height  w-100" alt="..." />
                                     <div className="carousel-caption d-none d-md-block">
                                         <h5>{products[0].title}</h5>
-                                        <Link to={'/productDetail/'+products[0].slug} className={"btn btn-primary"}>
+                                        <a href={'/productDetail/'+products[0].slug} className={"btn btn-primary"}>
                                             Ver detalles
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -129,18 +129,18 @@ const Beginning = () => {
                                     <img  src={'https://codealo-commerce-cms.onrender.com'+products[1].image.url} className="d-block  height w-100" alt="..." />
                                         <div className="carousel-caption d-none d-md-block">
                                         <h5>{products[1].title}</h5>
-                                        <Link to={'/productDetail/'+products[1].slug}  className={"btn btn-primary"}>
+                                        <a href={'/productDetail/'+products[1].slug}  className={"btn btn-primary"}>
                                             Ver detalles
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
                                 <div className="carousel-item">
                                     <img  src={'https://codealo-commerce-cms.onrender.com'+products[2].image.url} className="d-block  height w-100" alt="..." />
                                     <div className="carousel-caption d-none d-md-block">
                                         <h5>{products[2].title}</h5>
-                                        <Link to={'/productDetail/'+products[2].slug}  className={"btn btn-primary"}>
+                                        <a href={'/productDetail/'+products[2].slug}  className={"btn btn-primary"}>
                                             Ver detalles
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
