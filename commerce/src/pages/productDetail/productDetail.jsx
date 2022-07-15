@@ -2,6 +2,7 @@ import axios from 'axios'
 import React,{ useEffect,useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import {useParams} from 'react-router-dom'
+import exInt from '../../helpersExp/expNumberInt';
 import './productDetail.css'
 const ProductDetail = () => {
     const [product , setProduct ] = useState([])
@@ -9,7 +10,7 @@ const ProductDetail = () => {
     const [shoppingCart,setShoppinCart] = useState(window.localStorage.getItem('shoppingCart'))
     const [form,setForm] = useState({product:{id:''},quantity:1})
     const [loading,setLoading]= useState(true)
-    const [status,setStatus] = [0]
+    const [status,setStatus] = useState(0)
     const navigate = useNavigate()
     const { id } = useParams();
     useEffect(()=>{
@@ -90,8 +91,13 @@ const ProductDetail = () => {
     }
 
     function handleChange(e,name){
-        if(parseInt(form.quantity)>0){
-            setForm({...form, [name]:e.target.value})
+        if(name=='quantity'  && e.target.value==''){
+           return setForm({...form, [name]:0})
+        }else if(name=='quantity' && exInt.test(parseInt(e.target.value))){
+            let num = parseInt(e.target.value)
+            document.getElementById('quantity').value = num
+            form.quantity = num
+            setForm({...form, [name]:num})
         }
     }
    useEffect(()=>{
@@ -102,7 +108,7 @@ const ProductDetail = () => {
 
             
 
-                <div className="modal fade m-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-class modal fade m-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content" >
                             <button type="button" onClick={()=>redirect('/#')}  className="close w-25 ms-auto" data-dismiss="modal" aria-label="Close">
