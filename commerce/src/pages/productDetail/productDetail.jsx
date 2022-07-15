@@ -52,7 +52,11 @@ const ProductDetail = () => {
             myCarts.push(form)
             setMyCarts(myCarts)
             setLoading(true)
-             if(shoppingCart){
+            if(form.quantity == 0){
+                setStatus(400)
+            }
+
+             if(shoppingCart && status!=400){
                  axios.put('https://codealo-commerce-cms.onrender.com/carts/'+shoppingCart,
                 {
                     products_in_cart:myCarts
@@ -65,21 +69,25 @@ const ProductDetail = () => {
                  }).catch(err=>{
                     setStatus(400)
                  })
+                 setStatus(0)
              }else{
-                 axios.post('https://codealo-commerce-cms.onrender.com/carts',
-                 {
-                    products_in_cart:[
-                        form
-                    ]
-                }
-                 ).then(res=>{
-                    let {data} = res
-                    window.localStorage.setItem('shoppingCart',data.id)
-                    setLoading(false)
-                 }).catch(err=>{
-                    setStatus(400)
-                 })
-             }
+                if(status!=400){
+                    axios.post('https://codealo-commerce-cms.onrender.com/carts',
+                    {
+                        products_in_cart:[
+                            form
+                        ]
+                    }
+                    ).then(res=>{
+                        let {data} = res
+                        window.localStorage.setItem('shoppingCart',data.id)
+                        setLoading(false)
+                    }).catch(err=>{
+                        setStatus(400)
+                    })
+                } 
+                setStatus(0)
+            }
 
     }
     function redirect(url){
