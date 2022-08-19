@@ -3,7 +3,7 @@ El proyecto lo empece haciendo npx create-react-app  asi que genero un proyecto 
 https://github.com/xXangel9Xx/ecommerceReact/tree/main/commerce
 
 # Si quieren ver la version inicial del codigo pueden visitar el siguiente enlace
-el codigo inical lo trabaje en otro github para entregar lo: esta en el siguiente enlace https://github.com/xXangel1Xx/codealo-commerce/tree/main/commerce 
+el codigo inical lo trabaje en otro github por el code to earn de codealo: esta en el siguiente enlace https://github.com/xXangel1Xx/codealo-commerce/tree/main/commerce 
 
 
 
