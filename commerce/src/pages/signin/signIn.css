@@ -8,3 +8,12 @@
 .sign-in-form{
     width: 80vw;
 }
+#card-requirements ,#card-requirements-1{
+    display: none;
+}
+.requeriment{
+    color: red;
+}
+.succes{
+    color: #16ff00 !important;
+}
