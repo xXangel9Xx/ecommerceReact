@@ -8,7 +8,50 @@ const SignIn = () => {
     const navigate = useNavigate()
     function handleChange(e,name){
          setForm({...form, [name]:e.target.value})
+         if(name==='password' && /^[\s\S]{8,20}$/.test(e.target.value)){
+            document.getElementsByClassName('requeriment')[0].classList.add('succes')
+        }else{
+            document.getElementsByClassName('requeriment')[0].classList.contains('succes')?            
+            document.getElementsByClassName('requeriment')[0].classList.remove('succes'):console.log('')
+        }
+
+        if(name==='password' && /\d/.test(e.target.value)){
+           document.getElementsByClassName('requeriment')[1].classList.add('succes')
+       }else{
+           document.getElementsByClassName('requeriment')[1].classList.contains('succes')?            
+           document.getElementsByClassName('requeriment')[1].classList.remove('succes'):console.log('')
+       }
+
+
+       if(name==='password' && /^(?=.*?[$%&@?*_|<>#])/.test(e.target.value)){
+           document.getElementsByClassName('requeriment')[2].classList.add('succes')
+       }else{
+           document.getElementsByClassName('requeriment')[2].classList.contains('succes')?            
+           document.getElementsByClassName('requeriment')[2].classList.remove('succes'):console.log('')
+       }
+
+       if(name==='password' && /^(?=.*?[A-Z])/.test(e.target.value)){
+           document.getElementsByClassName('requeriment')[3].classList.add('succes')
+       }else{
+           document.getElementsByClassName('requeriment')[3].classList.contains('succes')?            
+           document.getElementsByClassName('requeriment')[3].classList.remove('succes'):console.log('')
+       }
+
+       if(name==='password' && /^(?=.*?[a-z])/.test(e.target.value)){
+           document.getElementsByClassName('requeriment')[4].classList.add('succes')
+       }else{
+           document.getElementsByClassName('requeriment')[4].classList.contains('succes')?            
+           document.getElementsByClassName('requeriment')[4].classList.remove('succes'):console.log('')
+       }
+       if(name==='repeatPassword' && form.password==e.target.value){
+           document.getElementsByClassName('requeriment')[5].classList.add('succes')
+       }else{
+           document.getElementsByClassName('requeriment')[5].classList.contains('succes')?            
+           document.getElementsByClassName('requeriment')[5].classList.remove('succes'):console.log('')
+       }
+    
     }
+
     useEffect(()=>{
     },[form])
     function send(e){
@@ -23,7 +66,12 @@ const SignIn = () => {
             return inputEmail.classList.add('border','border-danger')
         }
 
-        if(form.password===form.repeatPassword){
+        if(/^[\s\S]{8,20}$/.test(form.password)
+        && /\d/.test(form.password)
+        && /^(?=.*?[$%&@?*_|<>#])/.test(form.password)
+        && /^(?=.*?[A-Z])/.test(form.password)
+        && /^(?=.*?[a-z])/.test(form.password)
+        &&  form.password===form.repeatPassword){
             passwordInput.classList.contains('border')? passwordInput.classList.remove('border','border-danger') : console.log('') 
             repeatPasswordInput.classList.contains('border')? repeatPasswordInput.classList.remove('border','border-danger') : console.log('')
             let obj = {username: form.username, email:form.email, password:form.password}
@@ -50,6 +98,14 @@ const SignIn = () => {
            return repeatPasswordInput.classList.add('border','border-danger')
         }
     }
+    function  checkeRequirements(id) {
+        document.getElementById(id).style.display = 'block'
+    }
+
+    function  ocoultRequirements(id) {
+        document.getElementById(id).style.display = 'none'
+    }
+
     return (
         <div className="contain-page-sign-in">
             <form className='sign-in-form'>
@@ -71,11 +127,43 @@ const SignIn = () => {
                 </div>
                 <div className="mb-3">
                     <label for="inputPassword1" className="form-label">Password</label>
-                    <input  type="password" value={form.password} onInput={(e)=> handleChange(e,'password')} className="form-control" id="inputPassword1" />
+                    <input  type="password" 
+                    value={form.password} 
+                    onInput={(e)=> handleChange(e,'password')} 
+                    className="form-control" id="inputPassword1"
+                    onFocus={(e)=> checkeRequirements('card-requirements')}
+                    onBlur={(e)=> ocoultRequirements('card-requirements')} 
+                    />
+                    <div class="card ms-0 me-0 w-100" id='card-requirements'>
+                    <div class="card-header">
+                        Requerimientos de la contraseña
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text requeriment">Entre 8 y 20 caracteres</p>
+                        <p className="card-text requeriment">Al menos un numero</p>
+                        <p className="card-text requeriment">Al menos uno de estos caracteres especiales !, % , &, @, #, $, * , ? , _, -</p>
+                        <p className="card-text requeriment">Debe tener al  menos una mayúscula</p>
+                        <p className="card-text requeriment">Debe tener al  menos una minúscula</p>
+                    </div>
+                    </div>
                 </div>
                 <div className="mb-3">
                     <label for="inputPassword2" className="form-label">Repeat Password</label>
-                    <input type="password" value={form.repeatPassword} onInput={(e)=> handleChange(e,'repeatPassword')} className="form-control" id="inputPassword2" />
+                    <input type="password" 
+                    value={form.repeatPassword} 
+                    onInput={(e)=> handleChange(e,'repeatPassword')} 
+                    className="form-control" id="inputPassword2" 
+                    onFocus={(e)=> checkeRequirements('card-requirements-1')}
+                    onBlur={(e)=> ocoultRequirements('card-requirements-1')}
+                    />
+                    <div class="card ms-0 me-0 w-100" id='card-requirements-1'>
+                    <div class="card-header">
+                        Requerimientos de la contraseña
+                    </div>
+                    <div class="card-body">
+                        <p className="card-text requeriment">Las contraseñas deben coincidir</p>
+                    </div>
+                    </div>
                 </div>
 
                 <button type="submit" className="btn btn-primary" onClick={(e)=>send(e)}>Submit</button>
