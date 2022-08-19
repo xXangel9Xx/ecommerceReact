@@ -1,7 +1,11 @@
+
+# Codigo actualizado aqui
 El proyecto lo empece haciendo npx create-react-app  asi que genero un proyecto dentro del proyecto XD pero bueno aqui les dejo el enlace
 https://github.com/xXangel9Xx/ecommerceReact/tree/main/commerce
 
-el codigo inical con el que lo trabaje en codealo esta en el siguiente enlace https://github.com/xXangel1Xx/codealo-commerce/tree/main/commerce 
+# Si quieren ver la version inicial del codigo pueden visitar el siguiente enlace
+el codigo inical lo trabaje en otro github para entregar lo: esta en el siguiente enlace https://github.com/xXangel1Xx/codealo-commerce/tree/main/commerce 
+
 # Node 
 v14.17.0
 ## Npm
