@@ -71,7 +71,7 @@ const CreateOrder = () => {
 
                 <>
               
-                    <div className="modal fade m-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-class modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <button type="button" className="close w-25 ms-auto" data-dismiss="modal" aria-label="Close">
